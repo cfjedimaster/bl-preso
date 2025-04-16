@@ -1,0 +1,8 @@
+class {
+
+	public function main(args) {
+		println('hello world');
+		if(!args.isEmpty()) writeDump(args); 
+	}
+
+}

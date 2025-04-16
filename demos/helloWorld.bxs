@@ -1,0 +1,9 @@
+RED = '#char(27)#[31m';
+GREEN = '#char(27)#[32m';
+YELLOW = '#char(27)#[33m';
+RESET = '#char(27)#[0m'
+
+writeRed = s => RED & '#s#' & RESET;
+writeGreen = s => GREEN & '#s#' & RESET;
+
+println(writeRed('Hello') & ' ' & writeGreen('World'));

@@ -1,0 +1,18 @@
+args = cliGetArgs();
+/*
+Do we look for positionals, or options? Up to you!
+
+Ray, share the possible issue with positionals (add a space)
+println(args);
+*/
+
+name = '';
+for(a in args.positionals) {
+	parts = a.split('=');
+	if(parts[1] == 'name') name=parts[2];
+}
+
+if(name.isEmpty()) {
+	println('Please pass your name as an argument');
+	cliExit();
+} else println('Hello, #name#');

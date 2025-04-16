@@ -1,0 +1,14 @@
+args = cliGetArgs();
+/*
+Do we look for positionals, or options? Up to you!
+
+Optional version
+*/
+
+name = args.options.name ?: "";
+
+if(name.isEmpty()) {
+	name = cliRead('What is your name? ');
+}
+
+println('Hello, #name#');

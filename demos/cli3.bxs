@@ -1,0 +1,13 @@
+args = cliGetArgs();
+/*
+Do we look for positionals, or options? Up to you!
+
+Optional version
+*/
+
+name = args.options.name ?: "";
+
+if(name.isEmpty()) {
+	println('Please pass your name as an argument');
+	cliExit();
+} else println('Hello, #name#');

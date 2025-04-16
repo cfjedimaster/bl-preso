@@ -1,0 +1,14 @@
+args = cliGetArgs();
+/*
+Do we look for positionals, or options? Up to you!
+
+yet another version...
+do Raymond then Raymond Camden then quote it
+*/
+
+
+if(args.positionals.len() == 0) {
+	name = cliRead('What is your name? ');
+} else name = args.positionals[1];
+
+println('Hello, #name#');

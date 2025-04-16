@@ -1,0 +1,10 @@
+class {
+
+	public function main(args = []) {
+		if(args.len() == 0) {
+			name = cliRead('Tell me your name! ');
+		} else name = args[1];
+
+		println('Hello, #name#');
+	}
+}

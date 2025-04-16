@@ -1,0 +1,5 @@
+<bx:set name = "Ray">
+
+Hello <bx:output>#name#</bx:output>
+
+<!--- imagine a crap ton of HTML layout and such here... --->

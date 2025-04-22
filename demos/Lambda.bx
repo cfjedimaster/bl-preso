@@ -1,0 +1,58 @@
+
+// https://github.com/cfjedimaster/bx-lambda2/
+
+/**
+ * My BoxLang Lambda
+ *
+ * - The <code>run()</code> function is by convention the entry point of the Lambda
+ * - You can create other functions and use the `x-bx-function` header to call them
+ *
+ * <h2>Arguments</h2>
+ * - event: The event struct/map that triggered the Lambda
+ * - context: The AWS Lambda context object that adheres to the <code>com.amazonaws.services.lambda.runtime.Context</code>
+ * - response: The response object that will be returned to the caller which always has a standard structure:
+ *  - statusCode: The HTTP status code, 200 default
+ *  - headers: The HTTP headers map/struct
+ *  - body: The response body, or empty. This is for you to add your response data as you see fit.
+ *  - cookies: An array of incoming cookies (if any)
+ *  - Any other property you add will be returned as well
+ */
+class{
+
+	struct function getWeather(key,lat,long) {
+
+		local.apiURL = "https://api.pirateweather.net/forecast/#arguments.key#/#arguments.lat#,#arguments.long#";
+		bx:http url=local.apiURL result="local.result";
+		return jsonDeserialize(local.result.filecontent);
+	}
+
+	function run( event, context, response ){
+
+		local.pirateKey = server.system.environment?.PIRATE_KEY;
+
+		local.body = jsonDeserialize(event.body);
+
+		if(!body.keyExists('latitude') || !body.keyExists('longitude')) {
+
+			response.body = {
+				"error": true, 
+				"messages": [ "latitude and longitude must be passed, you passed #event.toString()#" ],
+				"data": "Error"
+			}
+
+			response.statusCode = 500;
+
+		} else {
+
+			local.report = getWeather(pirateKey, body.latitude, body.longitude);
+
+			response.body = {
+				"error": false,
+				"messages": [],
+				"data": report
+			}
+			response.statusCode = 200
+		}
+	}
+
+}

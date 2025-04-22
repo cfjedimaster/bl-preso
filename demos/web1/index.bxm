@@ -1,0 +1,17 @@
+<h1>Hello World</h1>
+
+<p>
+<bx:output>The date is #dateFormat(now())#.</bx:output>
+</p>
+
+<p>
+<a href="some.bxm">Some other page...</a>
+</p>
+
+<h2>Current Application Scope</h2>
+
+<bx:dump var="#application#">
+
+<h2>Current Session Scope</h2>
+
+<bx:dump var="#session#">

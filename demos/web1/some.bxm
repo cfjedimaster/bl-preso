@@ -1,0 +1,9 @@
+<h1>Some Page</h1>
+
+<p>
+This is some other page...
+</p>
+
+<h2>Current CGI Scope</h2>
+
+<bx:dump var="#cgi#">

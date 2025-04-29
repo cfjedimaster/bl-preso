@@ -1,0 +1,18 @@
+dsn = {
+	driver:"mysql",
+	host:server.system.environment.MYSQL_HOST,
+	port:server.system.environment.MYSQL_PORT,
+	database:"aggregator", 
+	username:server.system.environment.MYSQL_USERNAME,
+	password:server.system.environment.MYSQL_PWORD
+}; 
+
+blogs = queryExecute('
+	select id, name, url, rssurl from blogs 
+	where name like :name
+	order by name asc
+', { name: '%Ray%' }, { datasource:dsn });
+
+blogs.each(b => {
+	println("id: #b.id#, name: #b.name#, url: #b.url#, rss url: #b.rssurl#");
+});

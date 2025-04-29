@@ -1,0 +1,24 @@
+dsn = {
+	driver:"mysql",
+	host:server.system.environment.MYSQL_HOST,
+	port:server.system.environment.MYSQL_PORT,
+	database:"aggregator", 
+	username:server.system.environment.MYSQL_USERNAME,
+	password:server.system.environment.MYSQL_PWORD
+}; 
+
+blogs = queryExecute('
+	select id, name, url, rssurl from blogs 
+	order by name asc
+', { }, { datasource:dsn });
+
+blogs2 = queryExecute('
+	select id, name, url, rssurl from blogs 
+	order by name asc
+', { }, { datasource:dsn, returnType:'array' });
+
+println(jsonPrettify(blogs.toJSON()));
+println('-'.repeat(80));
+println(jsonPrettify(blogs2.toJSON()));
+println('-'.repeat(80));
+println(jsonPrettify(blogs.toArrayOfStructs().toJSON()));

@@ -1,4 +1,4 @@
-<h1>Hello World</h1>
+<bx:component template="tags/layout.bxm" title="Home Page">
 
 <p>
 <bx:output>The date is #dateFormat(now())#.</bx:output>
@@ -15,3 +15,9 @@
 <h2>Current Session Scope</h2>
 
 <bx:dump var="#session#">
+
+<h2>Current CGI Scope</h2>
+
+<bx:dump var="#cgi#" expand="false">
+
+</bx:component>

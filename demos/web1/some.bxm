@@ -1,9 +1,40 @@
+<bx:script>
+// could do all kinds of validation up here
+bx:param name="form.name" default="";
+bx:param name="form.age" default="";
+bx:param name="form.food" default="";
+</bx:script>
+
+<bx:component template="tags/layout.bxm" title="Some Page">
+
 <h1>Some Page</h1>
 
 <p>
 This is some other page...
 </p>
 
-<h2>Current CGI Scope</h2>
+<bx:output>
+<form action="" method="post">
+<p>
+<label for="name">Name: </label>
+<input type="text" name="name" id="name" value="#form.name#">
+</p>
+<p>
+<label for="age">Age: </label>
+<input type="number" name="age" id="age" value="#form.age#">
+</p>
+<p>
+Favorite food:<br>
+<label><input type="checkbox" name="food" value="pizza" <bx:if listFind(form.food,'pizza')>checked</bx:if>> Pizza</label><br>
+<label><input type="checkbox" name="food" value="sushi" <bx:if listFind(form.food,'sushi')>checked</bx:if>> Sushi</label><br>
+<label><input type="checkbox" name="food" value="unhealthy" <bx:if listFind(form.food,'unhealthy')>checked</bx:if>> Generally anything unhealthy</label><br>
+</p>
+<input type="submit">
+</form>
+</bx:output>
 
-<bx:dump var="#cgi#">
+<h2>Current Form Scope</h2>
+
+<bx:dump var="#form#">
+
+</bx:component>

@@ -1,6 +1,6 @@
 class {
 
-	this.name = "web1";
+	this.name = "web1a";
 	this.sessionManagement = true;
 
 	public function onApplicationStart() {

@@ -1,0 +1,15 @@
+body {
+	background-color: bisque;
+	margin-left: 50px;
+	margin-right: 50px;
+}
+
+h1#title a {
+	color: black;
+}
+
+main {
+	margin-top: 20px;
+	background-color: white;
+	padding: 10px;
+}

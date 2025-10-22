@@ -1,24 +1,27 @@
 dsn = {
 	driver:"mysql",
-	host:server.system.environment.MYSQL_HOST,
-	port:server.system.environment.MYSQL_PORT,
-	database:"aggregator", 
-	username:server.system.environment.MYSQL_USERNAME,
-	password:server.system.environment.MYSQL_PWORD
+	host:getSystemSetting("MYSQL_HOST"),
+	port:getSystemSetting("MYSQL_PORT"),
+	database:"golf_league_manager", 
+	username:getSystemSetting("MYSQL_USERNAME"),
+	password:getSystemSetting("MYSQL_PWORD")	
 }; 
 
-blogs = queryExecute('
-	select id, name, url, rssurl from blogs 
-	order by name asc
+
+users = queryExecute('
+	select * from user
+	order by lastName, firstName asc
+	limit 3
 ', { }, { datasource:dsn });
 
-blogs2 = queryExecute('
-	select id, name, url, rssurl from blogs 
-	order by name asc
+users2 = queryExecute('
+	select * from user
+	order by lastName, firstName asc
+	limit 3
 ', { }, { datasource:dsn, returnType:'array' });
 
-println(jsonPrettify(blogs.toJSON()));
+println(jsonPrettify(users.toJSON()));
 println('-'.repeat(80));
-println(jsonPrettify(blogs2.toJSON()));
+println(jsonPrettify(users2.toJSON()));
 println('-'.repeat(80));
-println(jsonPrettify(blogs.toArrayOfStructs().toJSON()));
+println(jsonPrettify(users.toArrayOfStructs().toJSON()));

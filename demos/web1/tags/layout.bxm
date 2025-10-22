@@ -1,5 +1,5 @@
 <bx:param name="attributes.title" default="">
-<bx:if thisTag.executionMode is "start">
+<bx:if thisComponent.executionMode is "start">
 <html>
 
 <head>

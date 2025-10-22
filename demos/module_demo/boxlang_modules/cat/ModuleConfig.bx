@@ -1,0 +1,15 @@
+class {
+
+	public function configure() {
+		println('configure cat');
+	}
+
+	public function onLoad() {
+		println('onLoad cat');
+	}
+
+	public function onUnload() {
+		println('onUnload cat');
+	}
+
+}

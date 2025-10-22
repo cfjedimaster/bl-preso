@@ -1,4 +1,6 @@
 <bx:script>
+bx:setting enableoutputonly=true;
+
 seed = [
 	{name:'Raymond Camden', title:'Jedi Evangelist', salary: 300000, location:'Lafayette, Louisiana'},
 	{name:'Todd Sharp', title:'Ninja Advocate', salary: 425000, location:'Atlanta, Georgia' },
@@ -38,4 +40,4 @@ seed = [
 
 </bx:loop>
 
-Done generating PDFs.
+<bx:output>Done generating PDFs.</bx:output>

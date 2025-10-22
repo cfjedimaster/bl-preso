@@ -12,9 +12,13 @@ class {
 
 	public function main(args = []) {
 
+		/*
 		CF_ACCOUNTID = server.system.environment?.CF_ACCOUNTID ?: '';
 		CF_BR_KEY = server.system.environment?.CF_BR_KEY ?: '';
-
+		*/
+		CF_ACCOUNTID = getSystemSetting("CF_ACCOUNTID");
+		CF_BR_KEY = getSystemSetting("CF_BR_KEY");
+		
 		if(CF_ACCOUNTID == '' OR CF_BR_KEY == '') {
 			println('Ensure CF_ACCOUNTID and CF_BR_KEY are defined in the environment.');
 			cliExit();

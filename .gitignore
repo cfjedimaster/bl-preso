@@ -2,3 +2,4 @@
 ~$intro.pptx
 demos/output/*
 .env
+.DS_Store
